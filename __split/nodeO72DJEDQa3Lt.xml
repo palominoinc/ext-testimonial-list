@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<node-schema id="nodeO72DJEDQa3Lt" lang="any" show-in="main" webpalschematype="wpPageRaw"><![CDATA[<schema xmlns="http://www.palominosys.com/wpschema">
+  
+    
+  <complexType extends="wpPage" name="wpPage-testimonial">
+    <element name="testimonials" type="wpTestimonialList" folder="list"/>
+  </complexType>
+
+<!--  ================= wpTestimonials ================ -->
+<!--  == a list of testimonials                     == -->
+<!--  ============================================= -->
+
+  <complexType name="wpTestimonialList" edittype="table" icon="table.png" lockable="yes">
+
+    <attribute name="id" use="auto" type="wpString" value="testimoniallist"/>
+    <attribute name="name" use="optional" type="wpName" value=""/>
+    <attribute name="show-in" use="oneof" type="wpString" value="main,related1,related2,related3,related4,related5"/>
+    <attribute name="col-size" use="oneof" type="wpString" value="sm,md,lg"/>
+    <attribute name="items-per-row" use="oneof" type="wpString" value="1,2,3,4,6,12"/>
+    <attribute name="image-size" use="oneof" type="wpString" value="100%,50%,33.33%,25%,8.33%"/>
+    <element name="testimonial" type="wpTestimonial" minOccurs="1" />
+  </complexType>
+
+<!--  ================== wpTestimonial ================ -->
+<!--  ===  a testimonial                         == -->
+<!--  ========================================== -->
+
+  <complexType name="wpTestimonial" edittype="sheet" icon="input.png" lockable="yes">
+    <attribute name="id" use="auto" type="wpString" value="testimonial"/>
+    <element name="source" type="wpString" minOccurs="1" />
+    <element name="title" type="wpStringL" minOccurs="1" />
+    <element name="quote" type="wpHtml" minOccurs="1" />
+    <element name="image-link" type="wpString" minOccurs="1" />
+    <element name="image" type="wpImage" use="optional"/>
+  </complexType>
+</schema>]]></node-schema>

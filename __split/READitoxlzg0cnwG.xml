@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<README id="READitoxlzg0cnwG" lang="any" webpalschematype="wpHtml"><h1>Getting started</h1>
+
+<p>Please refer<ch value="nbsp"/>to our [WebPal Developer Guide](https://www.gitbook.com/book/palomino/webpaldev/details) for more information on how to use WebPal extensions</p>
+
+<ul><li>Writing and extension</li>
+	<li>GitHub integration</li>
+</ul><p>NOTE: 'extensions-essentials' is required for all WebPal extensions</p>
+
+<h1>Testimonial-list</h1>
+
+<p>Plugin<ch value="nbsp"/>for WebPal-powered applications</p>
+
+<p>A testimonial-list<ch value="nbsp"/>is a list of testimonials kept in an editable<ch value="nbsp"/>table with options to format its layout</p>
+
+<p>Simply<ch value="nbsp"/>add this plugin to your WebPal<ch value="nbsp"/>extensions</p>
+
+<p>Insert a testimonial-list into a page you are creating</p>
+
+<p><img alt="" data-file-id="146225231021905595" src="146225231021905595" style="vertical-align:bottom;" title="" width="553"/></p>
+</README>

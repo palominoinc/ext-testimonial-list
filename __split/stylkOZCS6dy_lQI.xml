@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<stylesheet id="stylkOZCS6dy_lQI" lang="any" show-in="main" webpalschematype="wpAppStylesheet"><![CDATA[<?xml version="1.0"?>
+<!DOCTYPE xsl:stylesheet [
+<!ENTITY nbsp "&#160;" >
+]>
+
+<!-- (c) 2001-present All Copyrights Palomino System Innovations Inc.
+Illegal reproduction and disclosure will be prosecuted  -->
+
+<xsl:stylesheet
+                version="1.0"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:wp="http://www.palominosys.com/wp"
+                xmlns:php="http://php.net/xsl"
+                xmlns:date="http://exslt.org/dates-and-times"
+                xmlns:exsl="http://exslt.org/common"
+                extension-element-prefixes="exsl">
+
+
+  <xsl:template match="testimonials" priority="1">
+    <xsl:variable name="items_per_row" select="@items-per-row"/>
+    <xsl:variable name="col_size" select="@col-size"/>
+    <xsl:variable name="col_class">col-<xsl:value-of select="$col_size"/>-<xsl:value-of select="12 div $items_per_row"/></xsl:variable>
+    
+    <xsl:variable name="detail_col_class">
+      <xsl:choose>
+        <xsl:when test="image and @image-size='8.33%'">col-<xsl:value-of select="$col_size"/>-11</xsl:when>
+        <xsl:when test="image and @image-size='25%'">col-<xsl:value-of select="$col_size"/>-9</xsl:when>
+        <xsl:when test="image and @image-size='33.33%'">col-<xsl:value-of select="$col_size"/>-8</xsl:when>
+        <xsl:when test="image and @image-size='50%'">col-<xsl:value-of select="$col_size"/>-6</xsl:when>
+        <xsl:otherwise>col-<xsl:value-of select="$col_size"/>-12</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+
+    <xsl:variable name="image_col_class">
+      <xsl:choose>
+        <xsl:when test="@image-size='8.33%'">col-<xsl:value-of select="$col_size"/>-1</xsl:when>
+        <xsl:when test="@image-size='25%'">col-<xsl:value-of select="$col_size"/>-3</xsl:when>
+        <xsl:when test="@image-size='33.33%'">col-<xsl:value-of select="$col_size"/>-4</xsl:when>
+        <xsl:when test="@image-size='50%'">col-<xsl:value-of select="$col_size"/>-6</xsl:when>
+        <xsl:otherwise>col-<xsl:value-of select="$col_size"/>-12</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+
+
+    <div id="testimonials">
+      <xsl:if test="testimonial">
+        <div class="testimonial-list">
+          <xsl:for-each select="testimonial">
+            <div class="item {$col_class}">
+              
+              <div class="item-inner">
+                <div class="row">
+                
+                
+                <!-- only display a testimonial image if it exists -->
+                <xsl:if test="image">
+                  <div class="{$image_col_class} source-logo">
+                    <xsl:variable name="image-path">
+                      <xsl:choose>
+                        <!--   If there is a question mark in image link, add '&' before resize=  -->
+                        <xsl:when test="not(contains(image/@src, '?'))">
+                          <xsl:value-of select="concat(image/@src,'&amp;resize=100%')"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                          <xsl:value-of select="concat(image/@src,'?resize=100%')"/>
+                        </xsl:otherwise>
+                      </xsl:choose>
+                    </xsl:variable>
+                    <xsl:choose>
+                      <xsl:when test="image-link">
+                        <a href="{image-link}" target="_blank">
+                          <img src="?f={$image-path}" class="img-responsive"/>
+                        </a>
+                      </xsl:when>
+                      <xsl:otherwise>
+                        <img src="?f={$image-path}" class="img-responsive"/>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                  </div>
+                </xsl:if>
+
+                <xsl:if test="quote">
+                  <div class="{$detail_col_class} quote-container">
+                    <xsl:value-of select="quote" />
+                  
+                  <xsl:if test="source">
+                    <div class="source-info">
+                      <xsl:value-of select="source"/>
+                      <xsl:if test="title">
+                        <span class="source-title"><xsl:value-of select="title"/></span>
+                      </xsl:if>
+                    </div>
+                  </xsl:if>
+                  </div>
+                </xsl:if>
+
+                
+                </div>
+              </div>
+
+            </div>
+          </xsl:for-each>
+        </div>
+      </xsl:if>
+    </div>
+  </xsl:template>
+
+</xsl:stylesheet>]]></stylesheet>
